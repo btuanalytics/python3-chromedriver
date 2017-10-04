@@ -15,13 +15,15 @@ RUN apt-get update &&\
     wget \
     xvfb \
     xdg-utils \
-    python3 \
-    python3-pip \
     xserver-xephyr \
     build-essential \
     curl \
     supervisor \
     imagemagick \
+    libgtk-3-0 \
+    lsb-release \
+    libexif \
+    udev \
     libgconf-2-4; exit 0
 
 # Install Chrome and driver
