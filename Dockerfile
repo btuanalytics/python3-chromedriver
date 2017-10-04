@@ -1,5 +1,4 @@
-FROM ubuntu:14.04
-FROM python:3.6
+FROM ubuntu:16.04
 
 # Install Deps
 RUN apt-get update &&\
@@ -23,7 +22,7 @@ RUN apt-get update &&\
     libgtk-3-0 \
     lsb-release \
     libexif \
-    udev \
+    python3.6 \
     libgconf-2-4; exit 0
 
 # Install Chrome and driver
