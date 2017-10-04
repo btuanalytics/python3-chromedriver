@@ -1,10 +1,11 @@
 FROM ubuntu:14.04
 FROM python:3.6
 
+MAINTAINER Yuriy Grigortsevich <GrigortsevichYuriy@gmail.com>
+
 # Install Deps
 RUN apt-get update &&\
     apt-get install -y \
-    sudo \
     libxss1 \
     libasound2-dev \
     fonts-liberation \
