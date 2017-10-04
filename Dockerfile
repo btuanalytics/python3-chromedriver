@@ -2,6 +2,8 @@ FROM ubuntu:16.04
 FROM python:3.6
 FROM selenium/node-chrome:3.6.0-americium
 
+run apt-get -yqq install curl
+
 RUN CHROMEDRIVER_VERSION=`curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE` && \
     mkdir -p /opt/chromedriver-$CHROMEDRIVER_VERSION && \
     curl -sS -o /tmp/chromedriver_linux64.zip http://chromedriver.storage.googleapis.com/$CHROMEDRIVER_VERSION/chromedriver_linux64.zip && \
