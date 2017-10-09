@@ -1,5 +1,5 @@
-FROM python:latest
 FROM selenium/node-base:3.6.0-bromine
+FROM python:latest
 
 USER root
 
