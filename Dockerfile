@@ -1,4 +1,3 @@
-FROM ubuntu:16.04
 FROM python:latest
 FROM selenium/node-base:3.6.0-bromine
 
