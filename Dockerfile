@@ -1,5 +1,6 @@
-USER ROOT
 FROM python:latest
+USER ROOT
+
 
 #=========
 # Firefox
