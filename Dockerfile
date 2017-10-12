@@ -1,6 +1,5 @@
-FROM selenium/node-base:3.6.0-bromine
-
-USER root
+USER ROOT
+FROM python:latest
 
 #=========
 # Firefox
@@ -30,6 +29,3 @@ RUN wget --no-verbose -O /tmp/geckodriver.tar.gz https://github.com/mozilla/geck
   && ln -fs /opt/geckodriver-$GECKODRIVER_VERSION /usr/bin/geckodriver
  
 ENV PATH $PATH:/opt/geckodriver-$GECKODRIVER_VERSION
-
-FROM python:latest
-USER root
