@@ -1,4 +1,5 @@
 FROM python:3.6
+# shamelessly ripped from https://medium.com/@joyzoursky/recent-updates-6264d1e5d42f
 
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
