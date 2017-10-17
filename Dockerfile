@@ -16,10 +16,5 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-# Get M$ ODBC
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-RUN curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources.list.d/mssql-release.list
-RUN apt-get install -y apt-transport-https
-RUN apt-get -y update
-RUN ACCEPT_EULA=Y apt-get install -y msodbcsql
+# Get freetds
 RUN ACCEPT_EULA=Y apt-get install -y unixodbc unixodbc-dev freetds-dev tdsodbc
