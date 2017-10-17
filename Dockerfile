@@ -15,4 +15,7 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-RUN apt-get install -y python-pyodbc
+# Get M$ ODBC
+RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+RUN curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sources.list.d/mssql-release.list
+RUN ACCEPT_EULA=Y apt-get install msodbcsql
