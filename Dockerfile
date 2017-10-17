@@ -16,10 +16,12 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
+# Get freetds 
+RUN ACCEPT_EULA=Y apt-get install -y freetds-dev freetds-bin unixodbc-dev tdsodbc
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y \
-  unixodbc unixodbc-dev freetds-dev freetds-bin tdsodbc
-
-ADD etc_freetds_freetds.conf /etc/freetds/freetds.conf
-ADD etc_odbc.ini /etc/odbc.ini
-ADD etc_odbcinst.ini /etc/odbcinst.ini
+# Create odbc 
+RUN echo "[FreeTDS]">> /etc/odbcinst.ini
+RUN echo "Description=FreeTDS Driver">> /etc/odbcinst.ini
+RUN echo "Driver=/usr/lib/x86_64-linux-gnu/odbc/libtdsodbc.so>> /etc/odbcinst.ini
+RUN echo "Setup=/usr/lib/x86_64-linux-gnu/odbc/libtdsS.so">> /etc/odbcinst.ini
+RUN echo "">> /etc/odbcinst.ini
