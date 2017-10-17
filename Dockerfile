@@ -22,3 +22,8 @@ RUN curl https://packages.microsoft.com/config/debian/8/prod.list > /etc/apt/sou
 RUN apt-get install -y apt-transport-https
 RUN apt-get -y update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql
+RUN ACCEPT_EULA=Y apt-get install -y mssql-tools
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
+RUN echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
+RUN source ~/.bashrc
+RUN apt-get install -y unixodbc-dev
