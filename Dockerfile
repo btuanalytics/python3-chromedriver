@@ -16,5 +16,17 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 # set display port to avoid crash
 ENV DISPLAY=:99
 
-# Get freetds
-RUN ACCEPT_EULA=Y apt-get install -y unixodbc unixodbc-dev freetds-dev tdsodbc
+# Get freetds 
+RUN ACCEPT_EULA=Y apt-get install -y unixodbc unixodbc-dev freetds-dev tdsodbc odbcinst devscripts
+
+# Compile odbc_config
+RUN cd /usr/local/src/ && dget -ux http://http.debian.net/debian/pool/main/u/unixodbc/unixodbc_2.3.1-3.dsc \
+    && cd unixodbc-2.3.1/ && apt-get update && dpkg-buildpackage -uc -d -us -B && cp ./exe/odbc_config /usr/local/bin/
+
+## Microsoft ODBC Driver 13 for Linux
+RUN cd /usr/local/src/ \
+    && wget https://download.microsoft.com/download/2/E/5/2E58F097-805C-4AB8-9FC6-71288AB4409D/msodbcsql-13.0.0.0.tar.gz \
+    && tar xf msodbcsql-13.0.0.0.tar.gz && cd msodbcsql-13.0.0.0/ \
+    && ldd lib64/libmsodbcsql-13.0.so.0.0; echo "RET=$?" \
+    && sed -i 's/$(uname -p)/"x86_64"/g' ./install.sh \
+    && ./install.sh install --force --accept-license
