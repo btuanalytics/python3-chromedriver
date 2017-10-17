@@ -21,7 +21,3 @@ RUN ACCEPT_EULA=Y apt-get install -y freetds-dev freetds-bin unixodbc-dev tdsodb
 
 # Create odbc 
 RUN echo "[FreeTDS]">> /etc/odbcinst.ini
-RUN echo "Description=FreeTDS Driver">> /etc/odbcinst.ini
-RUN echo "Driver=/usr/lib64/libtdsodbc.so.0">> /etc/odbcinst.ini
-RUN echo "Setup=/usr/lib64/libtdsS.so.2">> /etc/odbcinst.ini
-RUN echo "">> /etc/odbcinst.ini
