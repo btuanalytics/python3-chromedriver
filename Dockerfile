@@ -23,4 +23,4 @@ RUN apt-get install -y python3 pip3
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | tee /etc/apt/sources.list.d/msprod.list
 RUN apt-get update
-RUN ACCEPT_EULA=Y apt-get install -y -f libc6>=2.21 libstdc++6>=5.2 msodbc mssql-tools unixodbc-dev
+RUN ACCEPT_EULA=Y apt-get install -y -f libc6>=2.21 libstdc++6>=5.2 msodbcsql mssql-tools unixodbc-dev
