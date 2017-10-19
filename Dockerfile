@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM python:3.6
 # shamelessly ripped from https://medium.com/@joyzoursky/recent-updates-6264d1e5d42f
 
 # install google chrome
