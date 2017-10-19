@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM ubuntu:16.04
 # shamelessly ripped from https://medium.com/@joyzoursky/recent-updates-6264d1e5d42f
 
 # install google chrome
@@ -15,6 +15,9 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 
 # set display port to avoid crash
 ENV DISPLAY=:99
+
+# install python
+RUN apt-get install -y python3 pip3
 
 # Get MS ODBC
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
