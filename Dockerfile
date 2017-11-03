@@ -19,9 +19,8 @@ RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
 # Get MS ODBC
-RUN su
+USER root
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/ubuntu/17.10/prod.list > /etc/apt/sources.list.d/mssql-release.list
-RUN exit
 RUN apt-get update
 RUN ACCEPT_EULA=Y apt-get install -y msodbcsql
